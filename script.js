@@ -32,10 +32,10 @@ const secOption = document.querySelector('#not-read');
 let starter = 0;
 
 function addBookToLibrary () {
-    const authorValue = document.querySelector('#author');
-    const titleValue = document.querySelector('#title');
-    const pagesValue = document.querySelector('#num');
-    const readValue = '';
+    const authorValue = document.querySelector('#author').value;
+    const titleValue = document.querySelector('#title').value;
+    const pagesValue = document.querySelector('#num').value;
+    let readValue = '';
 
     if (firstOption.checked) {
         readValue = firstOption.value;
