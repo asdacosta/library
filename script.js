@@ -6,7 +6,8 @@ displayForm.addEventListener('click', () => {
     dialog.showModal();
 })
 
-hideForm.addEventListener('click', () => {
+hideForm.addEventListener('click', (event) => {
+    event.preventDefault();
     dialog.close();
     addBookToLibrary();
 })
@@ -34,11 +35,12 @@ function addBookToLibrary () {
     const authorValue = document.querySelector('#author');
     const titleValue = document.querySelector('#title');
     const pagesValue = document.querySelector('#num');
+    const readValue = '';
 
     if (firstOption.checked) {
-        const readValue = firstOption.value;
+        readValue = firstOption.value;
     } else if (secOption.checked) {
-        const readValue = secOption.value;
+        readValue = secOption.value;
     }
 
     myLibrary[starter].author = authorValue;
