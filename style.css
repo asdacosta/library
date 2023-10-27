@@ -2,10 +2,11 @@
     padding: 0;
     margin: 0;
     font-size: 1.2rem;
-    /* border: 2px solid sandybrown; */
 }
 
 body {
+    display: flex;
+    flex-direction: column;
     background-color: rgb(209, 234, 250);
 }
 
@@ -27,9 +28,7 @@ input {
 }
 
 form {
-    display: flex;
-    justify-content: center;
-    margin-top: 100px;
+    margin: 100px;
 }
 
 fieldset {
@@ -49,4 +48,14 @@ button {
     padding: 10px;
     color: white;
     background-color: rgb(47, 169, 250);
+}
+
+body > button {
+    margin: 50px auto;
+}
+
+dialog {
+    margin: auto;
+    border: none;
+    background-color: rgba(209, 234, 250, 0);
 }
