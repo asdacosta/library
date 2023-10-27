@@ -6,13 +6,6 @@ displayForm.addEventListener('click', () => {
     dialog.showModal();
 })
 
-hideForm.addEventListener('click', (event) => {
-    event.preventDefault();
-    dialog.close();
-    addBookToLibrary();
-})
-
-
 const myLibrary = [];
 
 function Book (author, title, pages, read) {
@@ -49,3 +42,22 @@ function addBookToLibrary () {
     myLibrary[starter].read = readValue;
     starter += 1;
 }
+
+const cardSection = document.querySelector('dialog + section');
+
+function displayLibrary() {
+    for (n = 1; n < 20; n++) {
+        if (starter === n) {
+            const div = document.createElement('div');
+            div.textContent = `The book ${myLibrary[n-1].title} by ${myLibrary[n-1].author} has ${myLibrary[n-1].pages} pages and ${myLibrary[n-1].read}.`;
+            cardSection.appendChild(div);
+        }
+    }
+}
+
+hideForm.addEventListener('click', (event) => {
+    event.preventDefault();
+    dialog.close();
+    addBookToLibrary();
+    displayLibrary();
+})
