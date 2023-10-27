@@ -9,22 +9,18 @@ Algorithm
 3. Add EVENTLISTERNER to 'Add to form' button click
     - Run ADDBOOKTOLIBRARY fxn
     - Hide form
-
-1. Initialize MYLIBRARY as an empty array.
-2. Create BOOK fxn 
+4. Initialize MYLIBRARY as an empty array.
+5. Create BOOK fxn with parameters: AUTHOR, TITLE, PAGES, and READ
     - Create properties for each input prepended by 'this.'
-    - Create a methods that displays info of all inputs
-3. Use for-loop to set BOOK[N] to infinite number of book objects for each book input
-4. Create ADDBOOKTOLIBRARY fxn 
+6. Use for-loop to set BOOK to infinite number of book objects for each book input
+7. Create ADDBOOKTOLIBRARY fxn 
     - Take these inputs from the DOM: AUTHOR, TITLE, PAGES, and READ.
     - Use if to make sure we are moving to the next N in BOOK[N] 
-    - Create BOOK[N] instance object from BOOK fxn
     - Put inputs in the current instance (BOOK[N]) object of BOOK fxn
     - Append the object to MYLIBRARY array
-5. Create displayLibrary fxn 
+8. Create displayLibrary fxn 
     - Loop through MYLIBRARY array objects
         * Display each book on a card on the page.
-
 
 
 Pseudo-code
@@ -39,4 +35,41 @@ Pseudo-code
 3.
     hideForm.ADDEVENTLISTERNER('click', () => {
         dialog.close()
+        addBookToLibrary();
     })
+4. 
+    CONST myLibrary = []
+5.
+    FXN Book(author, title, pages, read)
+        THIS.author = author,
+        THIS.title = title,
+        THIS.pages = pages,
+        THIS.read = read
+    END-FXN
+6. 
+    FOR (n = 0; n < 20; n++)
+        CONST book = new Book()
+        myLibrary.push(book)
+    END-FOR
+7. 
+    CONST firstOption = select.('#read')
+    CONST secOption = select.('#not-read')
+    LET starter = 0;
+
+    FXN addBookToLibrary()
+        CONST authorValue = select('#author').value
+        CONST titleValue = select('#title').value
+        CONST pagesValue = select('#num').value
+        
+        IF (firstOption.CHECKED)
+            CONST readValue = firstOption.value
+        ELSE-IF (secOption.CHECKED)
+            CONST readValue = secOption.value
+        END-IF
+
+        myLibrary[starter].author = authorValue
+        myLibrary[starter].title = titleValue
+        myLibrary[starter].pages = pagesValue
+        myLibrary[starter].read = readValue
+        starter += 1;
+    END-FXN
