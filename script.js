@@ -6,6 +6,10 @@ displayForm.addEventListener('click', () => {
     dialog.showModal();
 })
 
+hideForm.addEventListener('click', () => {
+    dialog.close();
+})
+
 
 // const myLibrary = [];
 
