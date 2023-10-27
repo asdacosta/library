@@ -57,14 +57,15 @@ Pseudo-code
     LET starter = 0;
 
     FXN addBookToLibrary()
-        CONST authorValue = select('#author').value
-        CONST titleValue = select('#title').value
-        CONST pagesValue = select('#num').value
+        CONST authorValue = select('#author').VALUE
+        CONST titleValue = select('#title').VALUE
+        CONST pagesValue = select('#num').VALUE
+        LET readValue = ''
         
         IF (firstOption.CHECKED)
-            CONST readValue = firstOption.value
+            readValue = firstOption.VALUE
         ELSE-IF (secOption.CHECKED)
-            CONST readValue = secOption.value
+            readValue = secOption.VALUE
         END-IF
 
         myLibrary[starter].author = authorValue
@@ -72,4 +73,16 @@ Pseudo-code
         myLibrary[starter].pages = pagesValue
         myLibrary[starter].read = readValue
         starter += 1;
+    END-FXN
+8. 
+    CONST cardSection = select('dialog + section')
+    CONST textDisplay = `The book ${myLibrary[n].title} by ${myLibrary[n].author} has ${myLibrary[n].pages} and ${myLibrary[n].read}`;
+    FXN displayLibrary()
+        FOR (n = 1; n < 20; n++)
+            IF (starter === n)
+                CONST div = create('div')
+                div.TEXTCONTENT = textDisplay
+                cardSection.appendChild(div)
+            END-IF
+        END-FOR
     END-FXN
