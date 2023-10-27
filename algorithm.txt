@@ -1,0 +1,42 @@
+Problem
+Create a page that adds book to a library and displays them.
+
+
+Algorithm
+1. Assign NEWBOOK to the 'New Book' button
+2. Add EVENTLISTERNER to the button
+    - Display the form (Make use of dialogs and modals)
+3. Add EVENTLISTERNER to 'Add to form' button click
+    - Run ADDBOOKTOLIBRARY fxn
+    - Hide form
+
+1. Initialize MYLIBRARY as an empty array.
+2. Create BOOK fxn 
+    - Create properties for each input prepended by 'this.'
+    - Create a methods that displays info of all inputs
+3. Use for-loop to set BOOK[N] to infinite number of book objects for each book input
+4. Create ADDBOOKTOLIBRARY fxn 
+    - Take these inputs from the DOM: AUTHOR, TITLE, PAGES, and READ.
+    - Use if to make sure we are moving to the next N in BOOK[N] 
+    - Create BOOK[N] instance object from BOOK fxn
+    - Put inputs in the current instance (BOOK[N]) object of BOOK fxn
+    - Append the object to MYLIBRARY array
+5. Create displayLibrary fxn 
+    - Loop through MYLIBRARY array objects
+        * Display each book on a card on the page.
+
+
+
+Pseudo-code
+1. 
+    CONST displayForm = select('.displayForm')
+    CONST dialog = select('dialog')
+    CONST hideForm = select('.hideForm)
+2. 
+    displayForm.ADDEVENTLISTERNER('click', () => {
+        dialog.showModal()
+})
+3.
+    hideForm.ADDEVENTLISTERNER('click', () => {
+        dialog.close()
+    })
