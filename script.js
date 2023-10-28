@@ -60,9 +60,13 @@ function addBookToLibrary () {
 
 const cardSection = document.querySelector('dialog + section');
 const output = document.createElement('p');
+let lostCard = false;
 
 function displayLibrary() {
     if (starter === 10) {
+        if (lostCard) {
+            --starter;
+        }
         output.textContent = 'The Library is full!';
         output.style.backgroundColor = 'rgb(166, 217, 252)';
         cardSection.insertAdjacentElement('afterend', output);
@@ -73,6 +77,10 @@ function displayLibrary() {
             hideCard.textContent = 'Remove card';
 
             hideCard.addEventListener('click', () => {
+                if (!lostCard) {
+                    starter--; // Account for last missing card when starter hits 10 and an element(s) is removed after
+                }
+                lostCard = true;
                 div.remove();
                 starter--;
                 output.innerHTML = '';
