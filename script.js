@@ -69,7 +69,7 @@ function displayLibrary() {
         return;
     }
             const div = document.createElement('div');
-            const hideCard = document.createElement('div');
+            const hideCard = document.createElement('button');
             hideCard.textContent = 'Remove card';
 
             // At index 1 is when text is entered for the index 0, so we want to always ref the prev text entered with (n-1)
