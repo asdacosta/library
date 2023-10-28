@@ -2,7 +2,7 @@
     padding: 0;
     margin: 0;
     font-size: 1.2rem;
-    border: 2px solid tomato;
+    /* border: 2px solid teal; */
 }
 
 body {
@@ -75,9 +75,9 @@ dialog + section {
     box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4); 
 }
 
-.last-sec div {
+.last-sec > div {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     text-align: center;
     width: 200px;
     height: 200px;
@@ -102,11 +102,17 @@ fieldset {
 }
 
 .last-sec button {
-    width: 130px;
-    margin: auto;
-    font-size: 1rem;
-    padding: 5px;
+    width: 50px;
+    /* margin: auto; */
+    font-size: 0.8rem;
+    padding: 2px;
     color: white;
     background-color: rgb(47, 169, 250);
     cursor: pointer;
+}
+
+.last-sec > div > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
