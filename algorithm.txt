@@ -20,10 +20,14 @@ Algorithm
     - Append the object to MYLIBRARY array
 8. Create displayLibrary fxn 
     - Display each book on a card on the page.
-
-    - Create and add a button to the div before appending
-9. Add EVENTLISTERNER to the new button click
+    - Create and add a clear button to the div before appending to doc
+**  - Create and add a read button to the div before appending to doc
+9. Add EVENTLISTERNER to clear button click
     - Button should make that particular div disappear
+**
+10. Add EVENTLISTERNER to read button click
+    - Button should toggle read status
+**
 
 
 Pseudo-code
@@ -81,18 +85,22 @@ Pseudo-code
     CONST cardSection = select('dialog + section')
     FXN displayLibrary()
                 CONST div = create('div')
+                CONST hideCard = create('button')
+                hideCard.TEXTCONTENT = 'Clear';
 
                 **
-                CONST hideCard = create('button')
-                CONST hideCard.TEXTCONTENT = 'Remove Card';
+                CONST toggleRead = create('button')
+                toggleRead.TEXTCONTENT = 'Flip'
+                **
+
+
                 hideCard.ADDEVENTLISTERNER('click', () => {
                     Remove or Hide div 
                 })
-                **
 
                 div.TEXTCONTENT = `The book ${myLibrary[n].title} by ${myLibrary[n].author} has ${myLibrary[n].pages} and ${myLibrary[n].read}`;
 
-**              div.appendChild(hideCard)
-
+**              div.appendChild(toggleRead)                
+                div.appendChild(hideCard)
                 cardSection.appendChild(div)
     END-FXN
