@@ -74,6 +74,8 @@ function displayLibrary() {
     }
             const div = document.createElement('div');
             const hideCard = document.createElement('button');
+            const toggleRead = document.createElement('button');
+            toggleRead.textContent = 'Flip';
             hideCard.textContent = 'Clear';
 
             hideCard.addEventListener('click', () => {
@@ -89,6 +91,8 @@ function displayLibrary() {
 
             // At index 1 is when text is entered for the index 0, so we want to always ref the prev text entered with (n-1)
             div.textContent = `The book ${myLibrary[starter-1].title} by ${myLibrary[starter-1].author} has ${myLibrary[starter-1].pages} pages and ${myLibrary[starter-1].read}.`;
+
+            div.appendChild(toggleRead);
             div.appendChild(hideCard);
             cardSection.appendChild(div);
 }
