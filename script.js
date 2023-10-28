@@ -74,7 +74,7 @@ function displayLibrary() {
     }
             const div = document.createElement('div');
             const hideCard = document.createElement('button');
-            hideCard.textContent = 'Remove card';
+            hideCard.textContent = 'Clear';
 
             hideCard.addEventListener('click', () => {
                 if (!lostCard) {
