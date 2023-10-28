@@ -37,6 +37,16 @@ function addBookToLibrary () {
         readValue = secOption.value;
     }
 
+    if (authorValue === '' || titleValue === '' || pagesValue === '' || readValue ==='') {
+        output.textContent = 'Kindly input all details of the book.';
+        output.style.backgroundColor = 'rgb(166, 217, 252)';
+        cardSection.insertAdjacentElement('afterend', output);
+        return;
+    } else {
+        output.innerHTML = '';
+        output.style.backgroundColor = 'inherit';
+    }
+
     if (starter === 10) {
         return;
     } else {
@@ -54,6 +64,7 @@ const output = document.createElement('p');
 function displayLibrary() {
     if (starter === 10) {
         output.textContent = 'The Library is full!';
+        output.style.backgroundColor = 'rgb(166, 217, 252)';
         cardSection.insertAdjacentElement('afterend', output);
         return;
     }
