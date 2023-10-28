@@ -2,6 +2,7 @@
     padding: 0;
     margin: 0;
     font-size: 1.2rem;
+    border: 2px solid tomato;
 }
 
 body {
@@ -42,7 +43,7 @@ li {
     list-style-type: none;
 }
 
-button {
+.hideForm, body > button {
     font-size: 1rem;
     margin: 30px 0;
     padding: 10px;
@@ -94,4 +95,18 @@ section + p {
     margin: 20px auto;
     padding: 10px;
     background-color: rgb(166, 217, 252);
+}
+
+fieldset {
+    border: 2px solid rgba(0, 0, 0, 0.4);
+}
+
+.last-sec button {
+    width: 130px;
+    margin: auto;
+    font-size: 1rem;
+    padding: 5px;
+    color: white;
+    background-color: rgb(47, 169, 250);
+    cursor: pointer;
 }
