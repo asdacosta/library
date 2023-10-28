@@ -83,7 +83,8 @@ Pseudo-code
                 CONST div = create('div')
 
                 **
-                CONST hideCard = select('div > button')
+                CONST hideCard = create('button')
+                CONST hideCard.TEXTCONTENT = 'Remove Card';
                 hideCard.ADDEVENTLISTERNER('click', () => {
                     Remove or Hide div 
                 })
