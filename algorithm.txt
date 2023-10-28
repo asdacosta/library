@@ -21,7 +21,7 @@ Algorithm
 8. Create displayLibrary fxn 
     - Display each book on a card on the page.
     - Create and add a clear button to the div before appending to doc
-**  - Create and add a read button to the div before appending to doc
+    - Create and add a read button to the div before appending to doc
 9. Add EVENTLISTERNER to clear button click
     - Button should make that particular div disappear
 **
@@ -87,20 +87,24 @@ Pseudo-code
                 CONST div = create('div')
                 CONST hideCard = create('button')
                 hideCard.TEXTCONTENT = 'Clear';
-
-                **
                 CONST toggleRead = create('button')
                 toggleRead.TEXTCONTENT = 'Flip'
-                **
 
+                toggleRead.ADDEVENTLISTERNER('click', () => {
+                    IF (myLibrary[starter-1].read === 'is read')
+                        myLibrary[starter-1].read === 'is not read'
+                    ELSE-IF (myLibrary[starter-1].read === 'is not read')
+                        myLibrary[starter-1].read === 'is read'
+                    END-IF
+                })
 
                 hideCard.ADDEVENTLISTERNER('click', () => {
                     Remove or Hide div 
                 })
 
-                div.TEXTCONTENT = `The book ${myLibrary[n].title} by ${myLibrary[n].author} has ${myLibrary[n].pages} and ${myLibrary[n].read}`;
+                div.TEXTCONTENT = `The book ${myLibrary[starter-1].title} by ${myLibrary[starter-1].author} has ${myLibrary[starter-1].pages} and ${myLibrary[starter-1].read}`;
 
-**              div.appendChild(toggleRead)                
+                div.appendChild(toggleRead)                
                 div.appendChild(hideCard)
                 cardSection.appendChild(div)
     END-FXN
