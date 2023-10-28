@@ -10,7 +10,7 @@ body {
     background-color: rgb(209, 234, 250);
 }
 
-section {
+dialog section {
     width: 400px;
     padding: 20px;
     background-color: rgb(166, 217, 252);
@@ -48,14 +48,44 @@ button {
     padding: 10px;
     color: white;
     background-color: rgb(47, 169, 250);
+    cursor: pointer;
 }
 
 body > button {
-    margin: 50px auto;
+    margin: 30px auto;
 }
 
 dialog {
     margin: auto;
     border: none;
     background-color: rgba(209, 234, 250, 0);
+}
+
+dialog + section {
+    display: flex;
+    justify-content: center;    
+    align-items: center;
+    margin: auto;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 700px;
+    height: 700px;
+    background-color: rgb(166, 217, 252);
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4); 
+}
+
+.last-sec div {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 200px;
+    height: 200px;
+    padding: 0 5px;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2); 
+    background-color: rgb(209, 234, 250);
+}
+
+h1 {
+    margin: 20px auto;
+    font-size: 1.5rem;
 }
