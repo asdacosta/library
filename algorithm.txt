@@ -19,8 +19,11 @@ Algorithm
     - Put inputs in the current instance (BOOK[N]) object of BOOK fxn
     - Append the object to MYLIBRARY array
 8. Create displayLibrary fxn 
-    - Loop through MYLIBRARY array objects
-        * Display each book on a card on the page.
+    - Display each book on a card on the page.
+
+    - Create and add a button to the div before appending
+9. Add EVENTLISTERNER to the new button click
+    - Button should make that particular div disappear
 
 
 Pseudo-code
@@ -76,13 +79,19 @@ Pseudo-code
     END-FXN
 8. 
     CONST cardSection = select('dialog + section')
-    CONST textDisplay = `The book ${myLibrary[n].title} by ${myLibrary[n].author} has ${myLibrary[n].pages} and ${myLibrary[n].read}`;
     FXN displayLibrary()
-        FOR (n = 1; n < 20; n++)
-            IF (starter === n)
                 CONST div = create('div')
-                div.TEXTCONTENT = textDisplay
+
+                **
+                CONST hideCard = select('div > button')
+                hideCard.ADDEVENTLISTERNER('click', () => {
+                    Remove or Hide div 
+                })
+                **
+
+                div.TEXTCONTENT = `The book ${myLibrary[n].title} by ${myLibrary[n].author} has ${myLibrary[n].pages} and ${myLibrary[n].read}`;
+
+**              div.appendChild(hideCard)
+
                 cardSection.appendChild(div)
-            END-IF
-        END-FOR
     END-FXN
