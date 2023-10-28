@@ -74,6 +74,9 @@ function displayLibrary() {
 
             hideCard.addEventListener('click', () => {
                 div.remove();
+                starter--;
+                output.innerHTML = '';
+                output.style.backgroundColor = 'inherit';
             })
 
             // At index 1 is when text is entered for the index 0, so we want to always ref the prev text entered with (n-1)
