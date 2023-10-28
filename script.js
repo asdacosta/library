@@ -15,13 +15,14 @@ function Book (author, title, pages, read) {
     this.read = read
 }
 
-for (n = 0; n < 20; n++) {
+for (n = 0; n < 11; n++) {
     const book = new Book();
     myLibrary.push(book);
 }
 
 const firstOption = document.querySelector('#read');
 const secOption = document.querySelector('#not-read');
+const header = document.querySelector('h1');
 let starter = 0;
 
 function addBookToLibrary () {
@@ -36,23 +37,30 @@ function addBookToLibrary () {
         readValue = secOption.value;
     }
 
-    myLibrary[starter].author = authorValue;
-    myLibrary[starter].title = titleValue;
-    myLibrary[starter].pages = pagesValue;
-    myLibrary[starter].read = readValue;
-    starter += 1;
+    if (starter === 10) {
+        return;
+    } else {
+        myLibrary[starter].author = authorValue;
+        myLibrary[starter].title = titleValue;
+        myLibrary[starter].pages = pagesValue;
+        myLibrary[starter].read = readValue;
+        starter += 1;
+    }
 }
 
 const cardSection = document.querySelector('dialog + section');
+const output = document.createElement('p');
 
 function displayLibrary() {
-    for (n = 1; n < 20; n++) {
-        if (starter === n) {
-            const div = document.createElement('div');
-            div.textContent = `The book ${myLibrary[n-1].title} by ${myLibrary[n-1].author} has ${myLibrary[n-1].pages} pages and ${myLibrary[n-1].read}.`;
-            cardSection.appendChild(div);
-        }
+    if (starter === 10) {
+        output.textContent = 'The Library is full!';
+        cardSection.insertAdjacentElement('afterend', output);
+        return;
     }
+            const div = document.createElement('div');
+            // At index 1 is when text is entered for the index 0, so we want to always ref the prev text entered with (n-1)
+            div.textContent = `The book ${myLibrary[starter-1].title} by ${myLibrary[starter-1].author} has ${myLibrary[starter-1].pages} pages and ${myLibrary[starter-1].read}.`;
+            cardSection.appendChild(div);
 }
 
 hideForm.addEventListener('click', (event) => {
