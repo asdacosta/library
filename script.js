@@ -79,6 +79,18 @@ function displayLibrary() {
             toggleRead.textContent = 'Flip';
             hideCard.textContent = 'Clear';
 
+            toggleRead.addEventListener('click', () => {
+                if (myLibrary[starter-1].read === 'is read') {
+                    div.textContent = `The book ${myLibrary[starter-1].title} by ${myLibrary[starter-1].author} has ${myLibrary[starter-1].pages} pages and is not read.`;
+                } else if (myLibrary[starter-1].read === 'is not read') {
+                    div.textContent = `The book ${myLibrary[starter-1].title} by ${myLibrary[starter-1].author} has ${myLibrary[starter-1].pages} pages and is read.`;
+                }
+                subDiv.appendChild(toggleRead);
+                subDiv.appendChild(hideCard);
+                div.appendChild(subDiv);
+            })
+
+
             hideCard.addEventListener('click', () => {
                 if (!lostCard) {
                     starter--; // Account for last missing card when starter hits 10 and an element(s) is removed after
