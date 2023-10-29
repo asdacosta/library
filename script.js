@@ -94,7 +94,7 @@ function displayLibrary() {
             })
 
             // At index 1 is when text is entered for the index 0, so we want to always ref the prev text entered with (n-1)
-            div.innerHTML = `The book ${myLibrary[starter-1].title} by ${myLibrary[starter-1].author} has ${myLibrary[starter-1].pages} pages and <span>${myLibrary[starter-1].read}.</span>`;
+            div.innerHTML = `<p>The book ${myLibrary[starter-1].title} by ${myLibrary[starter-1].author} has ${myLibrary[starter-1].pages} pages and <span>${myLibrary[starter-1].read}.</span></p>`;
 
 
             subDiv.appendChild(toggleRead);
@@ -105,16 +105,15 @@ function displayLibrary() {
                 toggleRead.addEventListener('click', () => {
                     if (myLibrary[index].read === 'is read') {
                         myLibrary[index].read = 'is not read';
-                        div.innerHTML = `The book ${myLibrary[index].title} by ${myLibrary[index].author} has ${myLibrary[index].pages} pages and <span>${myLibrary[index].read}.</span>`;
+                        div.innerHTML = `<p>The book ${myLibrary[index].title} by ${myLibrary[index].author} has ${myLibrary[index].pages} pages and <span>${myLibrary[index].read}.</span></p>`;
                     } else if (myLibrary[index].read === 'is not read') {
                         myLibrary[index].read = 'is read';
-                        div.innerHTML = `The book ${myLibrary[index].title} by ${myLibrary[index].author} has ${myLibrary[index].pages} pages and <span>${myLibrary[index].read}.</span>`;
+                        div.innerHTML = `<p>The book ${myLibrary[index].title} by ${myLibrary[index].author} has ${myLibrary[index].pages} pages and <span>${myLibrary[index].read}.</span></p>`;
                     }
                     subDiv.appendChild(toggleRead);
                     subDiv.appendChild(hideCard);
                     div.appendChild(subDiv);
                 })
-
         }
 
 hideForm.addEventListener('click', (event) => {
