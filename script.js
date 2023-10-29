@@ -63,6 +63,8 @@ const output = document.createElement('p');
 let lostCard = false;
 
 function displayLibrary() {
+    let index = starter-1;
+
     if (starter === 10) {
         if (lostCard) {
             --starter;
@@ -78,15 +80,6 @@ function displayLibrary() {
             const toggleRead = document.createElement('button');
             toggleRead.textContent = 'Flip';
             hideCard.textContent = 'Clear';
-
-
-            toggleRead.addEventListener('click', () => {
-                if (myLibrary[starter-1].read === 'is read') {
-                    spanRead.textContent = 'is not read';
-                } else if (myLibrary[starter-1].read === 'is not read') {
-                    spanRead.textContent = 'is read';
-                }
-            })
 
 
             hideCard.addEventListener('click', () => {
@@ -108,19 +101,19 @@ function displayLibrary() {
             subDiv.appendChild(hideCard);
             div.appendChild(subDiv);
             cardSection.appendChild(div);
-            const spanRead = document.querySelectorAll('div span');
 
-            spanRead.forEach(span => {
                 toggleRead.addEventListener('click', () => {
-                    if (myLibrary[starter-1].read === 'is read') {
-                        span.textContent = 'is not read.';
-                    } else if (myLibrary[starter-1].read === 'is not read') {
-                        span.textContent = 'is read.';
+                    if (myLibrary[index].read === 'is read') {
+                        div.textContent = `The book ${myLibrary[index].title} by ${myLibrary[index].author} has ${myLibrary[index].pages} pages and is not read.`;
+                    } else if (myLibrary[index].read === 'is not read') {
+                        div.textContent = `The book ${myLibrary[index].title} by ${myLibrary[index].author} has ${myLibrary[index].pages} pages and is read.`;
                     }
+                    subDiv.appendChild(toggleRead);
+                    subDiv.appendChild(hideCard);
+                    div.appendChild(subDiv);
                 })
-            })
 
-}
+        }
 
 hideForm.addEventListener('click', (event) => {
     event.preventDefault();
