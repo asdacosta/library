@@ -104,9 +104,11 @@ function displayLibrary() {
 
                 toggleRead.addEventListener('click', () => {
                     if (myLibrary[index].read === 'is read') {
-                        div.textContent = `The book ${myLibrary[index].title} by ${myLibrary[index].author} has ${myLibrary[index].pages} pages and is not read.`;
+                        myLibrary[index].read = 'is not read';
+                        div.innerHTML = `The book ${myLibrary[index].title} by ${myLibrary[index].author} has ${myLibrary[index].pages} pages and <span>${myLibrary[index].read}.</span>`;
                     } else if (myLibrary[index].read === 'is not read') {
-                        div.textContent = `The book ${myLibrary[index].title} by ${myLibrary[index].author} has ${myLibrary[index].pages} pages and is read.`;
+                        myLibrary[index].read = 'is read';
+                        div.innerHTML = `The book ${myLibrary[index].title} by ${myLibrary[index].author} has ${myLibrary[index].pages} pages and <span>${myLibrary[index].read}.</span>`;
                     }
                     subDiv.appendChild(toggleRead);
                     subDiv.appendChild(hideCard);
