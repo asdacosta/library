@@ -41,6 +41,12 @@ function addBookToLibrary () {
         output.textContent = 'Kindly input all details of the book.';
         output.style.backgroundColor = 'rgb(166, 217, 252)';
         cardSection.insertAdjacentElement('afterend', output);
+
+        myLibrary[starter].author = authorValue;
+        myLibrary[starter].title = titleValue;
+        myLibrary[starter].pages = pagesValue;
+        myLibrary[starter].read = readValue;
+        starter += 1;
         return;
     } else {
         output.innerHTML = '';
@@ -64,6 +70,10 @@ let lostCard = false;
 
 function displayLibrary() {
     let index = starter-1;
+
+    if (myLibrary[index].author === '' || myLibrary[index].title === '' || myLibrary[index].pages === '' || myLibrary[index].read === '') {
+        return;
+    }
 
     if (starter === 10) {
         if (lostCard) {
