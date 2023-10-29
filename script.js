@@ -79,15 +79,13 @@ function displayLibrary() {
             toggleRead.textContent = 'Flip';
             hideCard.textContent = 'Clear';
 
+
             toggleRead.addEventListener('click', () => {
                 if (myLibrary[starter-1].read === 'is read') {
-                    div.textContent = `The book ${myLibrary[starter-1].title} by ${myLibrary[starter-1].author} has ${myLibrary[starter-1].pages} pages and is not read.`;
+                    spanRead.textContent = 'is not read';
                 } else if (myLibrary[starter-1].read === 'is not read') {
-                    div.textContent = `The book ${myLibrary[starter-1].title} by ${myLibrary[starter-1].author} has ${myLibrary[starter-1].pages} pages and is read.`;
+                    spanRead.textContent = 'is read';
                 }
-                subDiv.appendChild(toggleRead);
-                subDiv.appendChild(hideCard);
-                div.appendChild(subDiv);
             })
 
 
@@ -103,12 +101,25 @@ function displayLibrary() {
             })
 
             // At index 1 is when text is entered for the index 0, so we want to always ref the prev text entered with (n-1)
-            div.textContent = `The book ${myLibrary[starter-1].title} by ${myLibrary[starter-1].author} has ${myLibrary[starter-1].pages} pages and ${myLibrary[starter-1].read}.`;
+            div.innerHTML = `The book ${myLibrary[starter-1].title} by ${myLibrary[starter-1].author} has ${myLibrary[starter-1].pages} pages and <span>${myLibrary[starter-1].read}.</span>`;
+
 
             subDiv.appendChild(toggleRead);
             subDiv.appendChild(hideCard);
             div.appendChild(subDiv);
             cardSection.appendChild(div);
+            const spanRead = document.querySelectorAll('div span');
+
+            spanRead.forEach(span => {
+                toggleRead.addEventListener('click', () => {
+                    if (myLibrary[starter-1].read === 'is read') {
+                        span.textContent = 'is not read.';
+                    } else if (myLibrary[starter-1].read === 'is not read') {
+                        span.textContent = 'is read.';
+                    }
+                })
+            })
+
 }
 
 hideForm.addEventListener('click', (event) => {
