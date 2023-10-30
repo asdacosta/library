@@ -24,6 +24,8 @@ const firstOption = document.querySelector('#read');
 const secOption = document.querySelector('#not-read');
 const header = document.querySelector('h1');
 let starter = 0;
+let emptyInput = false;
+let cards = 0;
 
 function addBookToLibrary () {
     const authorValue = document.querySelector('#author').value;
@@ -38,6 +40,11 @@ function addBookToLibrary () {
     }
 
     if (authorValue === '' || titleValue === '' || pagesValue === '' || readValue ==='') {
+        if (!emptyInput) {
+            emptyInput = true;
+        } else {
+            --starter;
+        }
         output.textContent = 'Kindly input all details of the book.';
         output.style.backgroundColor = 'rgb(166, 217, 252)';
         cardSection.insertAdjacentElement('afterend', output);
@@ -47,13 +54,14 @@ function addBookToLibrary () {
         myLibrary[starter].pages = pagesValue;
         myLibrary[starter].read = readValue;
         starter += 1;
+
         return;
     } else {
         output.innerHTML = '';
         output.style.backgroundColor = 'inherit';
     }
 
-    if (starter === 10) {
+    if (cards === 9) {
         return;
     } else {
         myLibrary[starter].author = authorValue;
@@ -75,7 +83,7 @@ function displayLibrary() {
         return;
     }
 
-    if (starter === 10) {
+    if (cards === 9) {
         if (lostCard) {
             --starter;
         }
@@ -83,6 +91,8 @@ function displayLibrary() {
         output.style.backgroundColor = 'rgb(166, 217, 252)';
         cardSection.insertAdjacentElement('afterend', output);
         return;
+    } else {
+        cards += 1;
     }
             const div = document.createElement('div');
             const subDiv = document.createElement('div');
@@ -99,8 +109,10 @@ function displayLibrary() {
                 lostCard = true;
                 div.remove();
                 starter--;
+                --cards;
                 output.innerHTML = '';
                 output.style.backgroundColor = 'inherit';
+                
             })
 
             // At index 1 is when text is entered for the index 0, so we want to always ref the prev text entered with (n-1)
