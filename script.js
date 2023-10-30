@@ -55,6 +55,9 @@ function addBookToLibrary () {
         myLibrary[starter].read = readValue;
         starter += 1;
 
+        if (cards === 9) {
+            output.textContent = 'The Library is full!';
+        }
         return;
     } else {
         output.innerHTML = '';
