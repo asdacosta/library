@@ -8,14 +8,16 @@ displayForm.addEventListener('click', () => {
 
 const myLibrary = [];
 
-function Book (author, title, pages, read) {
-    this.author = author,
-    this.title = title,
-    this.pages = pages,
-    this.read = read
+class Book {
+    constructor(author, title, pages, read) {
+        this.author = author;
+        this.title = title;
+        this.pages = pages;
+        this.read = read;
+    }
 }
 
-for (n = 0; n < 11; n++) {
+for (let n = 0; n < 11; n++) {
     const book = new Book();
     myLibrary.push(book);
 }
