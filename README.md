@@ -81,6 +81,7 @@ No assets used.
 - [ ] Add an appealing background image
 - [ ] Let books be added from top-left
 - [ ] Add local storage for books added.
+- [ ] User should be able to exit dialog.
 
 </details>
 
