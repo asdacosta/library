@@ -52,6 +52,7 @@ Developers, users, recruiters.
 | `index.html` | Sets structure of display. |
 | `style.css` | Style website. |
 | `script.js` | Add interactivity. |
+|`view-imgs/*`| Live demo and different screen views used in `README.md`.|
 
 </details>
 
