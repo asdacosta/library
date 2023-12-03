@@ -1,26 +1,84 @@
+<div align='center'>
+
 # Library
+</div>
+<div align='center'>
+    <h3>💻 Languages</h3>
+    <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML badge">
+    <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS badge">
+    <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript badge">
+    <h3>🔧 Technologies</h3>
+    <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux badge">
+    <img src="https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white" alt="VS Code badge">
+    <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git badge">
+    <h4><a href="https://asdacosta.github.io/library/">Live Preview</a></h4>
+</div>
 
-## Project Origin
-The Odin Project
+**Demo:**
 
-## Project Objective
-Aims to build a library that books are added, and it stresses more on JavaScript
+![Live Demo](./view-imgs/library-demo.gif)
 
-## Project Relevance
-To solidify the concepts of `Objects & Objects Constructors` in JavaScript
+<details>
 
-## Intended Audience
+**<summary>Screen views</summary>**
+
+**Desktop View:**
+
+<img src="./view-imgs/desktop.png" alt="desktop view">
+<br>
+
+**Mobile View:**
+
+</details>
+
+## 🌐 Origin
+[The Odin Project](https://www.theodinproject.com/)
+
+## 📝 Description
+Builds a library
+
+## 🎯 Relevance
+To solidify concepts of `Objects & Objects Constructors` in JavaScript. 
+
+## 👥 Intended Audience
 Developers, users, recruiters.
 
-## Technologies
-* `XUbuntu` in Terminal
-* `VS` Code
+## 📂 Files
+<details>
+<summary>Invert</summary>
 
-## Files
 | File | Description |
 | - | - |
 | `index.html` | Sets structure of display. |
 | `style.css` | Style website. |
 | `script.js` | Add interactivity. |
 
-[Library](https://asdacosta.github.io/library/)
+</details>
+
+## ©️ Credit
+<details>
+<summary>Invert</summary>
+
+No assets used.
+
+</details>
+
+## 🔄 Improvements
+<details>
+<summary>Invert</summary>
+
+- [ ] Add an appealing background image
+- [ ] Let books be added from top-left
+- [ ] Add local storage for books added.
+
+</details>
+
+## 👤 Contributor & Curator
+1. [Abraham Da Costa Silvanus](https://github.com/asdacosta) 
+
+<br>
+
+> [!IMPORTANT]
+> Seek contributor's consent for any code usage.
+
+**[🞁 Top](#library)**
