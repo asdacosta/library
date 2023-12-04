@@ -59,9 +59,11 @@ Developers, users, recruiters.
 
 | File | Description |
 | - | - |
-| `index.html` | Sets structure of display. |
-| `style.css` | Style website. |
-| `index.js` | Add interactivity. |
+|`src/*`| Source files that are bundled into the output directory `dist/`.|
+|`src/index.js`| The main JavaScript entry point that bundling begins.|
+|`dist/*`| Output files from bundling of files in directory `src/`.|
+|`dist/main.js`| Main JavaScript output file that contains the bundled JavaScript code. Code is minified and optimized for deployment (Due to mode set to production in webpack config). |
+|`package*`| Contains details of project and dependencies versions.|
 |`view-imgs/*`| Live demo and different screen views used in `README.md`.|
 
 </details>
@@ -70,7 +72,9 @@ Developers, users, recruiters.
 <details>
 <summary>Invert</summary>
 
-No assets used.
+| File | Description |
+| - | - |
+|`src/imgs/library.jpg`| Photo created by Janko Ferlič on [Unsplash](https://unsplash.com/).|
 
 </details>
 
@@ -78,8 +82,8 @@ No assets used.
 <details>
 <summary>Invert</summary>
 
-- [ ] Add an appealing background image
-- [ ] Let books be added from top-left
+- [x] Add an appealing background image
+- [x] Let books be added from top-left
 - [ ] Add local storage for books added.
 - [ ] User should be able to exit dialog.
 
