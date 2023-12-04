@@ -57,6 +57,12 @@ body > button {
   cursor: pointer;
 }
 
+.hideForm:hover,
+body > button:hover {
+  /* border: 2px solid rgb(194, 146, 79); */
+  color: rgb(66, 66, 66);
+}
+
 body > button {
   margin: 30px auto;
 }
