@@ -1,23 +1,21 @@
-import "./style.css";
+import './style.css';
 
 const importAllImages = (function () {
   function importAll(r) {
     return r.keys().map(r);
   }
 
-  const imgs = importAll(
-    require.context("./imgs", false, /\.(png|jpe?g|svg)$/)
-  );
+  const imgs = importAll(require.context('./imgs', false, /\.(png|jpe?g|svg)$/));
 })();
 
 const selectElements = (function () {
-  const displayFormButton = document.querySelector(".displayForm");
-  const dialog = document.querySelector("dialog");
-  const hideFormButton = document.querySelector(".hideForm");
-  const readOption = document.querySelector("#read");
-  const notReadOption = document.querySelector("#not-read");
-  const cardSection = document.querySelector("dialog + section");
-  const output = document.createElement("p");
+  const displayFormButton = document.querySelector('.displayForm');
+  const dialog = document.querySelector('dialog');
+  const hideFormButton = document.querySelector('.hideForm');
+  const readOption = document.querySelector('#read');
+  const notReadOption = document.querySelector('#not-read');
+  const cardSection = document.querySelector('dialog + section');
+  const output = document.createElement('p');
 
   return {
     displayFormButton,
@@ -40,7 +38,7 @@ const defineIndexesAndToggles = (function () {
 })();
 
 const displayForm = (function () {
-  selectElements.displayFormButton.addEventListener("click", () => {
+  selectElements.displayFormButton.addEventListener('click', () => {
     selectElements.dialog.showModal();
   });
 })();
@@ -65,10 +63,10 @@ const addEmptyBooksToLibrary = (function () {
 })();
 
 function addBookToLibrary() {
-  const authorValue = document.querySelector("#author").value;
-  const titleValue = document.querySelector("#title").value;
-  const pagesValue = document.querySelector("#num").value;
-  let readValue = "";
+  const authorValue = document.querySelector('#author').value;
+  const titleValue = document.querySelector('#title').value;
+  const pagesValue = document.querySelector('#num').value;
+  let readValue = '';
 
   if (selectElements.readOption.checked) {
     readValue = selectElements.readOption.value;
@@ -76,41 +74,30 @@ function addBookToLibrary() {
     readValue = selectElements.notReadOption.value;
   }
 
-  if (
-    authorValue === "" ||
-    titleValue === "" ||
-    pagesValue === "" ||
-    readValue === ""
-  ) {
+  if (authorValue === '' || titleValue === '' || pagesValue === '' || readValue === '') {
     if (!defineIndexesAndToggles.emptyInput) {
       defineIndexesAndToggles.emptyInput = true;
     } else {
       --defineIndexesAndToggles.starter;
     }
-    selectElements.output.textContent = "Kindly input all details of the book.";
-    selectElements.output.style.backgroundColor = "rgb(194, 146, 79)";
-    selectElements.cardSection.insertAdjacentElement(
-      "afterend",
-      selectElements.output
-    );
+    selectElements.output.textContent = 'Kindly input all details of the book.';
+    selectElements.output.style.backgroundColor = 'rgb(194, 146, 79)';
+    selectElements.cardSection.insertAdjacentElement('afterend', selectElements.output);
 
     addEmptyBooksToLibrary.myLibrary[defineIndexesAndToggles.starter].author =
       authorValue;
-    addEmptyBooksToLibrary.myLibrary[defineIndexesAndToggles.starter].title =
-      titleValue;
-    addEmptyBooksToLibrary.myLibrary[defineIndexesAndToggles.starter].pages =
-      pagesValue;
-    addEmptyBooksToLibrary.myLibrary[defineIndexesAndToggles.starter].read =
-      readValue;
+    addEmptyBooksToLibrary.myLibrary[defineIndexesAndToggles.starter].title = titleValue;
+    addEmptyBooksToLibrary.myLibrary[defineIndexesAndToggles.starter].pages = pagesValue;
+    addEmptyBooksToLibrary.myLibrary[defineIndexesAndToggles.starter].read = readValue;
     defineIndexesAndToggles.starter += 1;
 
     if (defineIndexesAndToggles.cards === 9) {
-      selectElements.output.textContent = "The Library is full!";
+      selectElements.output.textContent = 'The Library is full!';
     }
     return;
   } else {
-    selectElements.output.innerHTML = "";
-    selectElements.output.style.backgroundColor = "inherit";
+    selectElements.output.innerHTML = '';
+    selectElements.output.style.backgroundColor = 'inherit';
   }
 
   if (defineIndexesAndToggles.cards === 9) {
@@ -118,12 +105,9 @@ function addBookToLibrary() {
   } else {
     addEmptyBooksToLibrary.myLibrary[defineIndexesAndToggles.starter].author =
       authorValue;
-    addEmptyBooksToLibrary.myLibrary[defineIndexesAndToggles.starter].title =
-      titleValue;
-    addEmptyBooksToLibrary.myLibrary[defineIndexesAndToggles.starter].pages =
-      pagesValue;
-    addEmptyBooksToLibrary.myLibrary[defineIndexesAndToggles.starter].read =
-      readValue;
+    addEmptyBooksToLibrary.myLibrary[defineIndexesAndToggles.starter].title = titleValue;
+    addEmptyBooksToLibrary.myLibrary[defineIndexesAndToggles.starter].pages = pagesValue;
+    addEmptyBooksToLibrary.myLibrary[defineIndexesAndToggles.starter].read = readValue;
     defineIndexesAndToggles.starter += 1;
   }
 }
@@ -132,10 +116,10 @@ function displayLibrary() {
   let index = defineIndexesAndToggles.starter - 1;
 
   if (
-    addEmptyBooksToLibrary.myLibrary[index].author === "" ||
-    addEmptyBooksToLibrary.myLibrary[index].title === "" ||
-    addEmptyBooksToLibrary.myLibrary[index].pages === "" ||
-    addEmptyBooksToLibrary.myLibrary[index].read === ""
+    addEmptyBooksToLibrary.myLibrary[index].author === '' ||
+    addEmptyBooksToLibrary.myLibrary[index].title === '' ||
+    addEmptyBooksToLibrary.myLibrary[index].pages === '' ||
+    addEmptyBooksToLibrary.myLibrary[index].read === ''
   ) {
     return;
   }
@@ -144,24 +128,21 @@ function displayLibrary() {
     if (defineIndexesAndToggles.lostCard) {
       --defineIndexesAndToggles.starter;
     }
-    selectElements.output.textContent = "The Library is full!";
-    selectElements.output.style.backgroundColor = "rgb(194, 146, 79)";
-    selectElements.cardSection.insertAdjacentElement(
-      "afterend",
-      selectElements.output
-    );
+    selectElements.output.textContent = 'The Library is full!';
+    selectElements.output.style.backgroundColor = 'rgb(194, 146, 79)';
+    selectElements.cardSection.insertAdjacentElement('afterend', selectElements.output);
     return;
   } else {
     defineIndexesAndToggles.cards += 1;
   }
-  const div = document.createElement("div");
-  const subDiv = document.createElement("div");
-  const hideCard = document.createElement("button");
-  const toggleRead = document.createElement("button");
-  toggleRead.textContent = "Flip";
-  hideCard.textContent = "Clear";
+  const div = document.createElement('div');
+  const subDiv = document.createElement('div');
+  const hideCard = document.createElement('button');
+  const toggleRead = document.createElement('button');
+  toggleRead.textContent = 'Flip';
+  hideCard.textContent = 'Clear';
 
-  hideCard.addEventListener("click", () => {
+  hideCard.addEventListener('click', () => {
     if (!defineIndexesAndToggles.lostCard) {
       defineIndexesAndToggles.starter--; // Account for last missing card when starter hits 10 and an element(s) is removed after
     }
@@ -171,8 +152,8 @@ function displayLibrary() {
       defineIndexesAndToggles.starter--;
     }
     --defineIndexesAndToggles.cards;
-    selectElements.output.innerHTML = "";
-    selectElements.output.style.backgroundColor = "inherit";
+    selectElements.output.innerHTML = '';
+    selectElements.output.style.backgroundColor = 'inherit';
   });
 
   // At index 1 is when text is entered for the index 0, so we want to always ref the prev text entered with (n-1)
@@ -191,12 +172,12 @@ function displayLibrary() {
   div.appendChild(subDiv);
   selectElements.cardSection.appendChild(div);
 
-  toggleRead.addEventListener("click", () => {
-    if (addEmptyBooksToLibrary.myLibrary[index].read === "is read") {
-      addEmptyBooksToLibrary.myLibrary[index].read = "is not read";
+  toggleRead.addEventListener('click', () => {
+    if (addEmptyBooksToLibrary.myLibrary[index].read === 'is read') {
+      addEmptyBooksToLibrary.myLibrary[index].read = 'is not read';
       div.innerHTML = `<p>The book ${addEmptyBooksToLibrary.myLibrary[index].title} by ${addEmptyBooksToLibrary.myLibrary[index].author} has ${addEmptyBooksToLibrary.myLibrary[index].pages} pages and <span>${addEmptyBooksToLibrary.myLibrary[index].read}.</span></p>`;
-    } else if (addEmptyBooksToLibrary.myLibrary[index].read === "is not read") {
-      addEmptyBooksToLibrary.myLibrary[index].read = "is read";
+    } else if (addEmptyBooksToLibrary.myLibrary[index].read === 'is not read') {
+      addEmptyBooksToLibrary.myLibrary[index].read = 'is read';
       div.innerHTML = `<p>The book ${addEmptyBooksToLibrary.myLibrary[index].title} by ${addEmptyBooksToLibrary.myLibrary[index].author} has ${addEmptyBooksToLibrary.myLibrary[index].pages} pages and <span>${addEmptyBooksToLibrary.myLibrary[index].read}.</span></p>`;
     }
     subDiv.appendChild(toggleRead);
@@ -205,7 +186,7 @@ function displayLibrary() {
   });
 }
 
-selectElements.hideFormButton.addEventListener("click", (event) => {
+selectElements.hideFormButton.addEventListener('click', (event) => {
   event.preventDefault();
   selectElements.dialog.close();
   addBookToLibrary();
@@ -213,12 +194,12 @@ selectElements.hideFormButton.addEventListener("click", (event) => {
 });
 
 const exitDialog = (function () {
-  const cancelDialog = document.querySelector(".cancelForm");
+  const cancelDialog = document.querySelector('.cancelForm');
 
-  cancelDialog.addEventListener("click", (event) => {
+  cancelDialog.addEventListener('click', (event) => {
     event.preventDefault();
     selectElements.dialog.close();
-    selectElements.output.innerHTML = "";
-    selectElements.output.style.backgroundColor = "inherit";
+    selectElements.output.innerHTML = '';
+    selectElements.output.style.backgroundColor = 'inherit';
   });
 })();
