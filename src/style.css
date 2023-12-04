@@ -1,7 +1,8 @@
 * {
   padding: 0;
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  letter-spacing: 1.2px;
   /* border: 2px solid teal; */
 }
 
@@ -10,6 +11,7 @@ body {
   flex-direction: column;
   background: url(./imgs/library-bg.jpg);
   background-size: cover;
+  font-family: "Raleway", sans-serif;
 }
 
 dialog section {
@@ -48,7 +50,7 @@ li {
 body > button {
   font-size: 1rem;
   margin: 30px 0;
-  padding: 10px;
+  padding: 0.5rem;
   color: black;
   background-color: rgb(212, 190, 160);
   border-radius: 0.7rem;
