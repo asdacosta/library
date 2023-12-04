@@ -16,7 +16,7 @@
 
 **Demo:**
 
-![Live Demo](./view-imgs/library-demo.gif)
+![Live Demo](./readme-assets/library-demo.gif)
 
 <details>
 
@@ -24,7 +24,7 @@
 
 **Desktop View:**
 
-<img src="./view-imgs/desktop.png" alt="desktop view">
+<img src="./readme-assets/desktop.png" alt="desktop view">
 <br>
 
 **Mobile View:**
@@ -65,7 +65,7 @@ Developers, users, recruiters.
 |`dist/main.js`| Main JavaScript output file that contains the bundled JavaScript code. Code is minified and optimized for deployment (Due to mode set to production in webpack config). |
 |`package*`| Contains details of project and dependencies versions.|
 | `algorithm.txt` | Algorithm for `JavaScript`. |
-|`view-imgs/*`| Live demo and different screen views used in `README.md`.|
+|`readme-assets/*`| Live demo and different screen views used in `README.md`.|
 
 </details>
 
