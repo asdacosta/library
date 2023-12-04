@@ -10,36 +10,59 @@ const importAllImages = (function () {
   );
 })();
 
-const displayForm = document.querySelector(".displayForm");
-const dialog = document.querySelector("dialog");
-const hideForm = document.querySelector(".hideForm");
+const selectElements = (function () {
+  const displayFormButton = document.querySelector(".displayForm");
+  const dialog = document.querySelector("dialog");
+  const hideFormButton = document.querySelector(".hideForm");
+  const readOption = document.querySelector("#read");
+  const notReadOption = document.querySelector("#not-read");
+  const cardSection = document.querySelector("dialog + section");
+  const output = document.createElement("p");
 
-displayForm.addEventListener("click", () => {
-  dialog.showModal();
-});
+  return {
+    displayFormButton,
+    dialog,
+    hideFormButton,
+    readOption,
+    notReadOption,
+    cardSection,
+    output,
+  };
+})();
 
-const myLibrary = [];
+const defineIndexesAndToggles = (function () {
+  let starter = 0;
+  let cards = 0;
+  let emptyInput = false;
+  let lostCard = false;
 
-class Book {
-  constructor(author, title, pages, read) {
-    this.author = author;
-    this.title = title;
-    this.pages = pages;
-    this.read = read;
+  return { starter, emptyInput, cards, lostCard };
+})();
+
+const displayForm = (function () {
+  selectElements.displayFormButton.addEventListener("click", () => {
+    selectElements.dialog.showModal();
+  });
+})();
+
+const addEmptyBooksToLibrary = (function () {
+  const myLibrary = [];
+  class Book {
+    constructor(author, title, pages, read) {
+      this.author = author;
+      this.title = title;
+      this.pages = pages;
+      this.read = read;
+    }
   }
-}
 
-for (let n = 0; n < 11; n++) {
-  const book = new Book();
-  myLibrary.push(book);
-}
+  for (let n = 0; n < 11; n++) {
+    const book = new Book();
+    myLibrary.push(book);
+  }
 
-const firstOption = document.querySelector("#read");
-const secOption = document.querySelector("#not-read");
-const header = document.querySelector("h1");
-let starter = 0;
-let emptyInput = false;
-let cards = 0;
+  return { myLibrary };
+})();
 
 function addBookToLibrary() {
   const authorValue = document.querySelector("#author").value;
@@ -47,10 +70,10 @@ function addBookToLibrary() {
   const pagesValue = document.querySelector("#num").value;
   let readValue = "";
 
-  if (firstOption.checked) {
-    readValue = firstOption.value;
-  } else if (secOption.checked) {
-    readValue = secOption.value;
+  if (selectElements.readOption.checked) {
+    readValue = selectElements.readOption.value;
+  } else if (selectElements.notReadOption.checked) {
+    readValue = selectElements.notReadOption.value;
   }
 
   if (
@@ -59,67 +82,77 @@ function addBookToLibrary() {
     pagesValue === "" ||
     readValue === ""
   ) {
-    if (!emptyInput) {
-      emptyInput = true;
+    if (!defineIndexesAndToggles.emptyInput) {
+      defineIndexesAndToggles.emptyInput = true;
     } else {
-      --starter;
+      --defineIndexesAndToggles.starter;
     }
-    output.textContent = "Kindly input all details of the book.";
-    output.style.backgroundColor = "rgb(194, 146, 79)";
-    cardSection.insertAdjacentElement("afterend", output);
+    selectElements.output.textContent = "Kindly input all details of the book.";
+    selectElements.output.style.backgroundColor = "rgb(194, 146, 79)";
+    selectElements.cardSection.insertAdjacentElement(
+      "afterend",
+      selectElements.output
+    );
 
-    myLibrary[starter].author = authorValue;
-    myLibrary[starter].title = titleValue;
-    myLibrary[starter].pages = pagesValue;
-    myLibrary[starter].read = readValue;
-    starter += 1;
+    addEmptyBooksToLibrary.myLibrary[defineIndexesAndToggles.starter].author =
+      authorValue;
+    addEmptyBooksToLibrary.myLibrary[defineIndexesAndToggles.starter].title =
+      titleValue;
+    addEmptyBooksToLibrary.myLibrary[defineIndexesAndToggles.starter].pages =
+      pagesValue;
+    addEmptyBooksToLibrary.myLibrary[defineIndexesAndToggles.starter].read =
+      readValue;
+    defineIndexesAndToggles.starter += 1;
 
-    if (cards === 9) {
-      output.textContent = "The Library is full!";
+    if (defineIndexesAndToggles.cards === 9) {
+      selectElements.output.textContent = "The Library is full!";
     }
     return;
   } else {
-    output.innerHTML = "";
-    output.style.backgroundColor = "inherit";
+    selectElements.output.innerHTML = "";
+    selectElements.output.style.backgroundColor = "inherit";
   }
 
-  if (cards === 9) {
+  if (defineIndexesAndToggles.cards === 9) {
     return;
   } else {
-    myLibrary[starter].author = authorValue;
-    myLibrary[starter].title = titleValue;
-    myLibrary[starter].pages = pagesValue;
-    myLibrary[starter].read = readValue;
-    starter += 1;
+    addEmptyBooksToLibrary.myLibrary[defineIndexesAndToggles.starter].author =
+      authorValue;
+    addEmptyBooksToLibrary.myLibrary[defineIndexesAndToggles.starter].title =
+      titleValue;
+    addEmptyBooksToLibrary.myLibrary[defineIndexesAndToggles.starter].pages =
+      pagesValue;
+    addEmptyBooksToLibrary.myLibrary[defineIndexesAndToggles.starter].read =
+      readValue;
+    defineIndexesAndToggles.starter += 1;
   }
 }
 
-const cardSection = document.querySelector("dialog + section");
-const output = document.createElement("p");
-let lostCard = false;
-
 function displayLibrary() {
-  let index = starter - 1;
+  let index = defineIndexesAndToggles.starter - 1;
 
   if (
-    myLibrary[index].author === "" ||
-    myLibrary[index].title === "" ||
-    myLibrary[index].pages === "" ||
-    myLibrary[index].read === ""
+    addEmptyBooksToLibrary.myLibrary[index].author === "" ||
+    addEmptyBooksToLibrary.myLibrary[index].title === "" ||
+    addEmptyBooksToLibrary.myLibrary[index].pages === "" ||
+    addEmptyBooksToLibrary.myLibrary[index].read === ""
   ) {
     return;
   }
 
-  if (cards === 9) {
-    if (lostCard) {
-      --starter;
+  if (defineIndexesAndToggles.cards === 9) {
+    if (defineIndexesAndToggles.lostCard) {
+      --defineIndexesAndToggles.starter;
     }
-    output.textContent = "The Library is full!";
-    output.style.backgroundColor = "rgb(194, 146, 79)";
-    cardSection.insertAdjacentElement("afterend", output);
+    selectElements.output.textContent = "The Library is full!";
+    selectElements.output.style.backgroundColor = "rgb(194, 146, 79)";
+    selectElements.cardSection.insertAdjacentElement(
+      "afterend",
+      selectElements.output
+    );
     return;
   } else {
-    cards += 1;
+    defineIndexesAndToggles.cards += 1;
   }
   const div = document.createElement("div");
   const subDiv = document.createElement("div");
@@ -129,36 +162,42 @@ function displayLibrary() {
   hideCard.textContent = "Clear";
 
   hideCard.addEventListener("click", () => {
-    if (!lostCard) {
-      starter--; // Account for last missing card when starter hits 10 and an element(s) is removed after
+    if (!defineIndexesAndToggles.lostCard) {
+      defineIndexesAndToggles.starter--; // Account for last missing card when starter hits 10 and an element(s) is removed after
     }
-    lostCard = true;
+    defineIndexesAndToggles.lostCard = true;
     div.remove();
-    starter--;
-    --cards;
-    output.innerHTML = "";
-    output.style.backgroundColor = "inherit";
+    if (defineIndexesAndToggles.starter > 0) {
+      defineIndexesAndToggles.starter--;
+    }
+    --defineIndexesAndToggles.cards;
+    selectElements.output.innerHTML = "";
+    selectElements.output.style.backgroundColor = "inherit";
   });
 
   // At index 1 is when text is entered for the index 0, so we want to always ref the prev text entered with (n-1)
-  div.innerHTML = `<p>The book ${myLibrary[starter - 1].title} by ${
-    myLibrary[starter - 1].author
-  } has ${myLibrary[starter - 1].pages} pages and <span>${
-    myLibrary[starter - 1].read
+  div.innerHTML = `<p>The book ${
+    addEmptyBooksToLibrary.myLibrary[defineIndexesAndToggles.starter - 1].title
+  } by ${
+    addEmptyBooksToLibrary.myLibrary[defineIndexesAndToggles.starter - 1].author
+  } has ${
+    addEmptyBooksToLibrary.myLibrary[defineIndexesAndToggles.starter - 1].pages
+  } pages and <span>${
+    addEmptyBooksToLibrary.myLibrary[defineIndexesAndToggles.starter - 1].read
   }.</span></p>`;
 
   subDiv.appendChild(toggleRead);
   subDiv.appendChild(hideCard);
   div.appendChild(subDiv);
-  cardSection.appendChild(div);
+  selectElements.cardSection.appendChild(div);
 
   toggleRead.addEventListener("click", () => {
-    if (myLibrary[index].read === "is read") {
-      myLibrary[index].read = "is not read";
-      div.innerHTML = `<p>The book ${myLibrary[index].title} by ${myLibrary[index].author} has ${myLibrary[index].pages} pages and <span>${myLibrary[index].read}.</span></p>`;
-    } else if (myLibrary[index].read === "is not read") {
-      myLibrary[index].read = "is read";
-      div.innerHTML = `<p>The book ${myLibrary[index].title} by ${myLibrary[index].author} has ${myLibrary[index].pages} pages and <span>${myLibrary[index].read}.</span></p>`;
+    if (addEmptyBooksToLibrary.myLibrary[index].read === "is read") {
+      addEmptyBooksToLibrary.myLibrary[index].read = "is not read";
+      div.innerHTML = `<p>The book ${addEmptyBooksToLibrary.myLibrary[index].title} by ${addEmptyBooksToLibrary.myLibrary[index].author} has ${addEmptyBooksToLibrary.myLibrary[index].pages} pages and <span>${addEmptyBooksToLibrary.myLibrary[index].read}.</span></p>`;
+    } else if (addEmptyBooksToLibrary.myLibrary[index].read === "is not read") {
+      addEmptyBooksToLibrary.myLibrary[index].read = "is read";
+      div.innerHTML = `<p>The book ${addEmptyBooksToLibrary.myLibrary[index].title} by ${addEmptyBooksToLibrary.myLibrary[index].author} has ${addEmptyBooksToLibrary.myLibrary[index].pages} pages and <span>${addEmptyBooksToLibrary.myLibrary[index].read}.</span></p>`;
     }
     subDiv.appendChild(toggleRead);
     subDiv.appendChild(hideCard);
@@ -166,9 +205,10 @@ function displayLibrary() {
   });
 }
 
-hideForm.addEventListener("click", (event) => {
+selectElements.hideFormButton.addEventListener("click", (event) => {
+  console.log(defineIndexesAndToggles.starter);
   event.preventDefault();
-  dialog.close();
+  selectElements.dialog.close();
   addBookToLibrary();
   displayLibrary();
 });
@@ -178,8 +218,8 @@ const exitDialog = (function () {
 
   cancelDialog.addEventListener("click", (event) => {
     event.preventDefault();
-    dialog.close();
-    output.innerHTML = "";
-    output.style.backgroundColor = "inherit";
+    selectElements.dialog.close();
+    selectElements.output.innerHTML = "";
+    selectElements.output.style.backgroundColor = "inherit";
   });
 })();
