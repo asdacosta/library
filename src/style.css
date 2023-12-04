@@ -99,12 +99,14 @@ dialog + section {
   padding: 0 5px;
   box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
   background-color: rgb(194, 146, 79);
+  cursor: context-menu;
 }
 
 h1 {
   margin: 20px auto;
   font-size: 2rem;
   color: white;
+  cursor: context-menu;
 }
 
 section + p {
