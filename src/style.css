@@ -48,14 +48,24 @@ li {
 }
 
 .hideForm,
-body > button {
+body > button,
+.cancelForm {
   font-size: 1rem;
   margin: 30px 0;
-  padding: 0.5rem;
+  padding: 0.4rem;
   color: black;
   background-color: rgb(212, 190, 160);
   border-radius: 0.7rem;
   cursor: pointer;
+}
+
+.cancelForm {
+  background-color: rgb(255, 255, 255);
+}
+
+.formButtons {
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .hideForm:hover,
