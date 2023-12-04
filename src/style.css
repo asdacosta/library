@@ -12,7 +12,7 @@ body {
   flex-direction: column;
   background: url(./imgs/library-bg.jpg);
   background-size: cover;
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 dialog section {
