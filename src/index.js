@@ -179,5 +179,7 @@ const exitDialog = (function () {
   cancelDialog.addEventListener("click", (event) => {
     event.preventDefault();
     dialog.close();
+    output.innerHTML = "";
+    output.style.backgroundColor = "inherit";
   });
 })();
