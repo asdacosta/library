@@ -206,7 +206,6 @@ function displayLibrary() {
 }
 
 selectElements.hideFormButton.addEventListener("click", (event) => {
-  console.log(defineIndexesAndToggles.starter);
   event.preventDefault();
   selectElements.dialog.close();
   addBookToLibrary();
