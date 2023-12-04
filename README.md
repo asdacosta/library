@@ -84,8 +84,8 @@ Developers, users, recruiters.
 
 - [x] Add an appealing background image
 - [x] Let books be added from top-left
+- [x] User should be able to exit dialog.
 - [ ] Add local storage for books added.
-- [ ] User should be able to exit dialog.
 
 </details>
 
