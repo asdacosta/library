@@ -172,3 +172,12 @@ hideForm.addEventListener("click", (event) => {
   addBookToLibrary();
   displayLibrary();
 });
+
+const exitDialog = (function () {
+  const cancelDialog = document.querySelector(".cancelForm");
+
+  cancelDialog.addEventListener("click", (event) => {
+    event.preventDefault();
+    dialog.close();
+  });
+})();
