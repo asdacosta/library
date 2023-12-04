@@ -3,6 +3,7 @@
   margin: 0;
   font-size: 1.1rem;
   letter-spacing: 1.2px;
+  box-sizing: border-box;
   /* border: 2px solid teal; */
 }
 
@@ -59,8 +60,8 @@ body > button {
 
 .hideForm:hover,
 body > button:hover {
-  /* border: 2px solid rgb(194, 146, 79); */
   color: rgb(66, 66, 66);
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.4);
 }
 
 body > button {
@@ -75,11 +76,12 @@ dialog {
 
 dialog + section {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   margin: auto;
+  padding: 1.4rem;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 1rem;
   width: 700px;
   height: 700px;
   background-color: rgb(212, 190, 160);
