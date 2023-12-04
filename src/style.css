@@ -1,118 +1,124 @@
 * {
-    padding: 0;
-    margin: 0;
-    font-size: 1.2rem;
-    /* border: 2px solid teal; */
+  padding: 0;
+  margin: 0;
+  font-size: 1.2rem;
+  /* border: 2px solid teal; */
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(209, 234, 250);
+  display: flex;
+  flex-direction: column;
+  background: url(./imgs/library-bg.jpg);
+  background-size: cover;
 }
 
 dialog section {
-    width: 400px;
-    padding: 20px;
-    background-color: rgb(166, 217, 252);
+  width: 400px;
+  padding: 20px;
+  background-color: rgb(194, 146, 79);
 }
 
 div {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 input {
-    flex: 1 1 auto;
-    font-size: 1rem;
-    padding-left: 5px;
+  flex: 1 1 auto;
+  font-size: 1rem;
+  padding-left: 5px;
 }
 
 form {
-    margin: 100px;
+  margin: 100px;
 }
 
 fieldset {
-    display: flex;
-    justify-content: center;
-    padding: 50px;
-    border: 2px solid rgb(163, 163, 163);
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+  border: 2px solid rgb(163, 163, 163);
 }
 
 li {
-    list-style-type: none;
+  list-style-type: none;
 }
 
-.hideForm, body > button {
-    font-size: 1rem;
-    margin: 30px 0;
-    padding: 10px;
-    color: white;
-    background-color: rgb(47, 169, 250);
-    cursor: pointer;
+.hideForm,
+body > button {
+  font-size: 1rem;
+  margin: 30px 0;
+  padding: 10px;
+  color: black;
+  background-color: rgb(212, 190, 160);
+  border-radius: 0.7rem;
+  cursor: pointer;
 }
 
 body > button {
-    margin: 30px auto;
+  margin: 30px auto;
 }
 
 dialog {
-    margin: auto;
-    border: none;
-    background-color: rgba(209, 234, 250, 0);
+  margin: auto;
+  border: none;
+  background-color: rgba(209, 234, 250, 0);
 }
 
 dialog + section {
-    display: flex;
-    justify-content: center;    
-    align-items: center;
-    margin: auto;
-    flex-wrap: wrap;
-    gap: 10px;
-    width: 700px;
-    height: 700px;
-    background-color: rgb(166, 217, 252);
-    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 700px;
+  height: 700px;
+  background-color: rgb(212, 190, 160);
+  border: 5px solid rgb(194, 146, 79);
+  border-radius: 2rem;
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);
 }
 
 .last-sec > div {
-    display: flex;
-    justify-content: space-around;
-    text-align: center;
-    width: 200px;
-    height: 200px;
-    padding: 0 5px;
-    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2); 
-    background-color: rgb(209, 234, 250);
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  width: 200px;
+  height: 200px;
+  padding: 0 5px;
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+  background-color: rgb(194, 146, 79);
 }
 
 h1 {
-    margin: 20px auto;
-    font-size: 1.5rem;
+  margin: 20px auto;
+  font-size: 2rem;
+  color: white;
 }
 
 section + p {
-    margin: 20px auto;
-    padding: 10px;
-    background-color: rgb(166, 217, 252);
+  margin: 20px auto;
+  padding: 10px;
+  background-color: rgb(194, 146, 79);
 }
 
 fieldset {
-    border: 2px solid rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(0, 0, 0, 0.4);
 }
 
 .last-sec button {
-    width: 50px;
-    /* margin: auto; */
-    font-size: 0.8rem;
-    padding: 2px;
-    color: white;
-    background-color: rgb(47, 169, 250);
-    cursor: pointer;
+  width: 50px;
+  /* margin: auto; */
+  font-size: 0.8rem;
+  padding: 2px;
+  color: black;
+  background-color: rgb(212, 190, 160);
+  cursor: pointer;
 }
 
 .last-sec > div > div {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
