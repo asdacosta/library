@@ -1,3 +1,15 @@
+import "./style.css";
+
+const importAllImages = (function () {
+  function importAll(r) {
+    return r.keys().map(r);
+  }
+
+  const imgs = importAll(
+    require.context("./imgs", false, /\.(png|jpe?g|svg)$/)
+  );
+})();
+
 const displayForm = document.querySelector(".displayForm");
 const dialog = document.querySelector("dialog");
 const hideForm = document.querySelector(".hideForm");
@@ -53,7 +65,7 @@ function addBookToLibrary() {
       --starter;
     }
     output.textContent = "Kindly input all details of the book.";
-    output.style.backgroundColor = "rgb(194, 146, 79)";
+    output.style.backgroundColor = "rgb(166, 217, 252)";
     cardSection.insertAdjacentElement("afterend", output);
 
     myLibrary[starter].author = authorValue;
@@ -103,7 +115,7 @@ function displayLibrary() {
       --starter;
     }
     output.textContent = "The Library is full!";
-    output.style.backgroundColor = "rgb(194, 146, 79)";
+    output.style.backgroundColor = "rgb(166, 217, 252)";
     cardSection.insertAdjacentElement("afterend", output);
     return;
   } else {
