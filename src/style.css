@@ -69,7 +69,8 @@ body > button,
 }
 
 .hideForm:hover,
-body > button:hover {
+body > button:hover,
+.cancelForm:hover {
   color: rgb(66, 66, 66);
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.4);
 }
