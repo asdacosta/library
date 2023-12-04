@@ -65,7 +65,7 @@ function addBookToLibrary() {
       --starter;
     }
     output.textContent = "Kindly input all details of the book.";
-    output.style.backgroundColor = "rgb(166, 217, 252)";
+    output.style.backgroundColor = "rgb(194, 146, 79)";
     cardSection.insertAdjacentElement("afterend", output);
 
     myLibrary[starter].author = authorValue;
@@ -115,7 +115,7 @@ function displayLibrary() {
       --starter;
     }
     output.textContent = "The Library is full!";
-    output.style.backgroundColor = "rgb(166, 217, 252)";
+    output.style.backgroundColor = "rgb(194, 146, 79)";
     cardSection.insertAdjacentElement("afterend", output);
     return;
   } else {
