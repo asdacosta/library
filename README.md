@@ -84,9 +84,10 @@ Developers, users, recruiters.
 <details>
 <summary>Invert</summary>
 
-- [x] Add an appealing background image
-- [x] Let books be added from top-left
+- [x] Add an appealing background image.
+- [x] Let books be added from top-left.
 - [x] User should be able to exit dialog.
+- [ ] Create mobile version.
 - [ ] Add local storage for books added.
 
 </details>
