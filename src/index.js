@@ -196,7 +196,7 @@ function displayLibrary() {
   });
 }
 
-function throwError(theEvent) {
+function throwError() {
   if (selectElements.authorInput.validity.valueMissing) {
     selectElements.authorInput.setCustomValidity("Author field can't be empty");
     selectElements.authorInput.addEventListener('input', () => {
@@ -221,24 +221,24 @@ function throwError(theEvent) {
   if (!selectElements.readOption.checked && !selectElements.notReadOption.checked) {
     selectElements.readOption.setCustomValidity('You need to check one');
   }
-
-  if (
-    selectElements.authorInput.validity.valid &&
-    selectElements.titleInput.validity.valid &&
-    selectElements.pagesInput.validity.valid &&
-    (selectElements.readOption.validity.valid ||
-      selectElements.notReadOption.validity.valid)
-  ) {
-    theEvent.preventDefault();
-    addBookToLibrary();
-    displayLibrary();
-    selectElements.dialog.close();
-  }
 }
 
 const closeForm = (function () {
   selectElements.hideFormButton.addEventListener('click', (event) => {
-    throwError(event);
+    if (
+      selectElements.authorInput.validity.valid &&
+      selectElements.titleInput.validity.valid &&
+      selectElements.pagesInput.validity.valid &&
+      (selectElements.readOption.validity.valid ||
+        selectElements.notReadOption.validity.valid)
+    ) {
+      event.preventDefault();
+      addBookToLibrary();
+      displayLibrary();
+      selectElements.dialog.close();
+    }
+
+    throwError();
   });
 })();
 
