@@ -40,10 +40,11 @@ Builds a library
 <details>
 <summary>Features</summary>
 
-* Adds only non-empty books to the library.
+* Adds only non-empty valid books to the library.
 * Library takes a maximum of nine books.
 * Delete a book from the library with `Clear` button.
 * Alternate a given book as 'Read' or 'Not read' with `Flip` button.
+* Validates all inputs
 
 </details>
 
