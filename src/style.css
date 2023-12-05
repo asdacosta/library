@@ -109,9 +109,15 @@ dialog + section {
   width: 200px;
   height: 200px;
   padding: 0 5px;
-  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.3);
   background-color: rgb(194, 146, 79);
   cursor: context-menu;
+  transition: transform 0.2s ease-in-out;
+}
+
+.last-sec > div:hover {
+  transform: scale(1.1);
+  z-index: 1;
 }
 
 h1 {
