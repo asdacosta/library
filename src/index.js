@@ -12,10 +12,15 @@ const selectElements = (function () {
   const displayFormButton = document.querySelector('.displayForm');
   const dialog = document.querySelector('dialog');
   const hideFormButton = document.querySelector('.hideForm');
-  const readOption = document.querySelector('#read');
-  const notReadOption = document.querySelector('#not-read');
   const cardSection = document.querySelector('dialog + section');
   const output = document.createElement('p');
+
+  // Inputs
+  const authorInput = document.querySelector('#author');
+  const titleInput = document.querySelector('#title');
+  const pagesInput = document.querySelector('#num');
+  const readOption = document.querySelector('#read');
+  const notReadOption = document.querySelector('#not-read');
 
   return {
     displayFormButton,
@@ -25,6 +30,9 @@ const selectElements = (function () {
     notReadOption,
     cardSection,
     output,
+    authorInput,
+    titleInput,
+    pagesInput,
   };
 })();
 
@@ -35,12 +43,6 @@ const defineIndexesAndToggles = (function () {
   let lostCard = false;
 
   return { starter, emptyInput, cards, lostCard };
-})();
-
-const displayForm = (function () {
-  selectElements.displayFormButton.addEventListener('click', () => {
-    selectElements.dialog.showModal();
-  });
 })();
 
 const addEmptyBooksToLibrary = (function () {
@@ -62,10 +64,16 @@ const addEmptyBooksToLibrary = (function () {
   return { myLibrary };
 })();
 
+const displayForm = (function () {
+  selectElements.displayFormButton.addEventListener('click', () => {
+    selectElements.dialog.showModal();
+  });
+})();
+
 function addBookToLibrary() {
-  const authorValue = document.querySelector('#author').value;
-  const titleValue = document.querySelector('#title').value;
-  const pagesValue = document.querySelector('#num').value;
+  const authorValue = selectElements.authorInput.value;
+  const titleValue = selectElements.titleInput.value;
+  const pagesValue = selectElements.pagesInput.value;
   let readValue = '';
 
   if (selectElements.readOption.checked) {
@@ -80,9 +88,9 @@ function addBookToLibrary() {
     } else {
       --defineIndexesAndToggles.starter;
     }
-    selectElements.output.textContent = 'Kindly input all details of the book.';
-    selectElements.output.style.backgroundColor = 'rgb(194, 146, 79)';
-    selectElements.cardSection.insertAdjacentElement('afterend', selectElements.output);
+    // selectElements.output.textContent = 'Kindly input all details of the book.';
+    // selectElements.output.style.backgroundColor = 'rgb(194, 146, 79)';
+    // selectElements.cardSection.insertAdjacentElement('afterend', selectElements.output);
 
     addEmptyBooksToLibrary.myLibrary[defineIndexesAndToggles.starter].author =
       authorValue;
@@ -101,6 +109,8 @@ function addBookToLibrary() {
   }
 
   if (defineIndexesAndToggles.cards === 9) {
+    selectElements.output.textContent = 'The Library is full!';
+    selectElements.output.style.backgroundColor = 'rgb(194, 146, 79)';
     return;
   } else {
     addEmptyBooksToLibrary.myLibrary[defineIndexesAndToggles.starter].author =
@@ -186,12 +196,51 @@ function displayLibrary() {
   });
 }
 
-selectElements.hideFormButton.addEventListener('click', (event) => {
-  event.preventDefault();
-  selectElements.dialog.close();
-  addBookToLibrary();
-  displayLibrary();
-});
+function throwError(theEvent) {
+  if (selectElements.authorInput.validity.valueMissing) {
+    selectElements.authorInput.setCustomValidity("Author field can't be empty");
+    selectElements.authorInput.addEventListener('input', () => {
+      selectElements.authorInput.setCustomValidity('');
+    });
+  }
+
+  if (selectElements.titleInput.validity.valueMissing) {
+    selectElements.titleInput.setCustomValidity("Title field can't be empty.");
+    selectElements.titleInput.addEventListener('input', () => {
+      selectElements.titleInput.setCustomValidity('');
+    });
+  }
+
+  if (selectElements.pagesInput.validity.valueMissing) {
+    selectElements.pagesInput.setCustomValidity("Page number can't be empty");
+    selectElements.pagesInput.addEventListener('input', () => {
+      selectElements.pagesInput.setCustomValidity('');
+    });
+  }
+
+  if (!selectElements.readOption.checked && !selectElements.notReadOption.checked) {
+    selectElements.readOption.setCustomValidity('You need to check one');
+  }
+
+  if (
+    selectElements.authorInput.validity.valid &&
+    selectElements.titleInput.validity.valid &&
+    selectElements.pagesInput.validity.valid &&
+    (selectElements.readOption.validity.valid ||
+      selectElements.notReadOption.validity.valid)
+  ) {
+    theEvent.preventDefault();
+    selectElements.dialog.close();
+  }
+}
+
+const closeForm = (function () {
+  selectElements.hideFormButton.addEventListener('click', (event) => {
+    throwError(event);
+    addBookToLibrary();
+    displayLibrary();
+  });
+})();
 
 const exitDialog = (function () {
   const cancelDialog = document.querySelector('.cancelForm');
