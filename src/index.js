@@ -212,7 +212,7 @@ function throwError(theEvent) {
   }
 
   if (selectElements.pagesInput.validity.valueMissing) {
-    selectElements.pagesInput.setCustomValidity("Page number can't be empty");
+    selectElements.pagesInput.setCustomValidity('Kindly enter a valid number of pages.');
     selectElements.pagesInput.addEventListener('input', () => {
       selectElements.pagesInput.setCustomValidity('');
     });
@@ -230,6 +230,8 @@ function throwError(theEvent) {
       selectElements.notReadOption.validity.valid)
   ) {
     theEvent.preventDefault();
+    addBookToLibrary();
+    displayLibrary();
     selectElements.dialog.close();
   }
 }
@@ -237,8 +239,6 @@ function throwError(theEvent) {
 const closeForm = (function () {
   selectElements.hideFormButton.addEventListener('click', (event) => {
     throwError(event);
-    addBookToLibrary();
-    displayLibrary();
   });
 })();
 
